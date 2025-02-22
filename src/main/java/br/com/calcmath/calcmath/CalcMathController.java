@@ -9,41 +9,50 @@ import javafx.scene.control.Label;
 public class CalcMathController {
 
     @FXML
-    private Label tela;
+    public Label operacao;
+    @FXML
+    public Label result;
 
-    private String expressao = "";
-    private boolean start = true;
+    private String expressao = "0";
+
     private final CalculadoraService calculadoraService = new CalculadoraService();
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
+
         Button clickedButton = (Button) event.getSource();
         String buttonText = clickedButton.getText();
 
         switch (buttonText) {
             case "C":
-                expressao = "";
-                start = true;
-                tela.setText("");
+                expressao = "0";
+                atualizarTela("", operacao);
+                atualizarTela(expressao, result);
                 break;
 
             case "=":
-                double resultado = calculadoraService.avaliarExpressao(expressao);
-                tela.setText(String.valueOf(resultado));
-                expressao = String.valueOf(resultado);
-                start = true;
+                if (!expressao.isEmpty()) {
+                    double resultado = calculadoraService.avaliarExpressao(expressao);
+                    atualizarTela(expressao + " = ", operacao);
+                    atualizarTela(String.valueOf(resultado), result);
+                    expressao = String.valueOf(resultado);
+                }
                 break;
 
             default:
-                if (start) {
+
+                if (expressao.isEmpty()) {
                     expressao = buttonText;
-                    tela.setText(buttonText);
-                    start = false;
+                    atualizarTela(buttonText, result);
                 } else {
                     expressao += buttonText;
-                    tela.setText(tela.getText() + buttonText);
+                    atualizarTela(expressao, result);
                 }
                 break;
         }
+    }
+
+    private void atualizarTela(String texto, Label label) {
+        label.setText(texto);
     }
 }
