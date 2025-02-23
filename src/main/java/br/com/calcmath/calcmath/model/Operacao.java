@@ -5,7 +5,7 @@ import java.util.function.BiFunction;
 public enum Operacao {
     SOMA("+", (a, b) -> a + b),
     SUBTRACAO("-", (a, b) -> a - b),
-    MULTIPLICACAO("*", (a, b) -> a * b),
+    MULTIPLICACAO("x", (a, b) -> a * b),
     DIVISAO("/", (a, b) -> {
         if (b == 0) throw new ArithmeticException("Divisão por zero!");
         return a / b;
@@ -25,5 +25,14 @@ public enum Operacao {
 
     public String getSimbolo() {
         return simbolo;
+    }
+
+    public static Operacao fromSimbolo(String simbolo) {
+        for (Operacao op : values()) {
+            if (op.getSimbolo().equals(simbolo)) {
+                return op;
+            }
+        }
+        return null;
     }
 }
