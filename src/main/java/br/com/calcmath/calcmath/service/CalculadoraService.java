@@ -1,54 +1,65 @@
 package br.com.calcmath.calcmath.service;
 
+import br.com.calcmath.calcmath.model.Operacao;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CalculadoraService {
 
     public double avaliarExpressao(String expressao) {
-        // Remove espaços (se houver)
-        expressao = expressao.replaceAll("\\s+", "");
+        System.out.println("Expressão recebida: " + expressao);
 
-        // Lista para armazenar números e operadores separadamente
+        expressao = removeEspacos(expressao);
+
+        if (expressao.isEmpty()) {
+            throw new IllegalArgumentException("Expressão vazia!");
+        }
+
         List<Double> numeros = new ArrayList<>();
-        List<Character> operadores = new ArrayList<>();
+        List<Operacao> operadores = new ArrayList<>();
 
-        String numeroAtual = "";
+        StringBuilder numeroAtual = new StringBuilder();
+
+        // Parsing da expressão
         for (int i = 0; i < expressao.length(); i++) {
             char c = expressao.charAt(i);
 
             if (Character.isDigit(c) || c == '.') {
-                numeroAtual += c;
-            } else if (c == '+' || c == '-' || c == '*' || c == '/') {
-                if (!numeroAtual.isEmpty()) {
-                    numeros.add(Double.parseDouble(numeroAtual));
-                    numeroAtual = "";
+                numeroAtual.append(c);
+            } else {
+                Operacao operacao = Operacao.fromSimbolo(String.valueOf(c));
+                if (operacao != null) {
+                    if (!numeroAtual.isEmpty()) {
+                        numeros.add(Double.parseDouble(numeroAtual.toString()));
+                        numeroAtual.setLength(0);
+                    }
+                    operadores.add(operacao);
+                } else {
+                    throw new IllegalArgumentException("Caractere inválido na expressão: " + c);
                 }
-                operadores.add(c);
             }
         }
-        // Adiciona o último número
+
+        // Adiciona o último número armazenado
         if (!numeroAtual.isEmpty()) {
-            numeros.add(Double.parseDouble(numeroAtual));
+            numeros.add(Double.parseDouble(numeroAtual.toString()));
         }
 
-        // Primeira passagem: resolve * e /
+        if (numeros.size() <= operadores.size()) {
+            throw new IllegalArgumentException("Expressão mal formada!");
+        }
+
+        // Primeiro, resolvemos multiplicação e divisão
         List<Double> tempNumeros = new ArrayList<>(numeros);
-        List<Character> tempOperadores = new ArrayList<>(operadores);
+        List<Operacao> tempOperadores = new ArrayList<>(operadores);
 
         for (int i = 0; i < tempOperadores.size(); ) {
-            char op = tempOperadores.get(i);
-            if (op == '*' || op == '/') {
+            Operacao op = tempOperadores.get(i);
+            if (op == Operacao.MULTIPLICACAO || op == Operacao.DIVISAO) {
                 double num1 = tempNumeros.get(i);
                 double num2 = tempNumeros.get(i + 1);
-                double resultado;
-
-                if (op == '*') {
-                    resultado = num1 * num2;
-                } else {
-                    if (num2 == 0) throw new ArithmeticException("Divisão por zero!");
-                    resultado = num1 / num2;
-                }
+                double resultado = op.executar(num1, num2);
 
                 tempNumeros.set(i, resultado);
                 tempNumeros.remove(i + 1);
@@ -58,19 +69,16 @@ public class CalculadoraService {
             }
         }
 
-        // Segunda passagem: resolve + e -
+        // Agora, resolvemos soma e subtração
         double resultadoFinal = tempNumeros.get(0);
         for (int i = 0; i < tempOperadores.size(); i++) {
-            char op = tempOperadores.get(i);
-            double num2 = tempNumeros.get(i + 1);
-
-            if (op == '+') {
-                resultadoFinal += num2;
-            } else if (op == '-') {
-                resultadoFinal -= num2;
-            }
+            resultadoFinal = tempOperadores.get(i).executar(resultadoFinal, tempNumeros.get(i + 1));
         }
 
         return resultadoFinal;
+    }
+
+    private String removeEspacos(String expressao) {
+        return expressao.replaceAll("\\s+", "");
     }
 }

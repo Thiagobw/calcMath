@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CalcMathController {
 
     @FXML
@@ -13,7 +16,7 @@ public class CalcMathController {
     @FXML
     public Label result;
 
-    private String expressao = "0";
+    private List<String> expressao = new ArrayList<>();
 
     private final CalculadoraService calculadoraService = new CalculadoraService();
 
@@ -25,31 +28,40 @@ public class CalcMathController {
 
         switch (buttonText) {
             case "C":
-                expressao = "0";
+                expressao.clear();
                 atualizarTela("", operacao);
-                atualizarTela(expressao, result);
+                atualizarTela("", result);
                 break;
 
             case "=":
                 if (!expressao.isEmpty()) {
-                    double resultado = calculadoraService.avaliarExpressao(expressao);
-                    atualizarTela(expressao + " = ", operacao);
+                    String expressaoStr = String.join("", expressao); // Concatena a lista em uma String
+                    double resultado = calculadoraService.avaliarExpressao(expressaoStr);
+                    atualizarTela(expressaoStr + " = ", operacao);
                     atualizarTela(String.valueOf(resultado), result);
-                    expressao = String.valueOf(resultado);
+                    expressao.clear();
+                    expressao.add(String.valueOf(resultado));
                 }
                 break;
-
             default:
-
-                if (expressao.isEmpty()) {
-                    expressao = buttonText;
-                    atualizarTela(buttonText, result);
+                if (expressao.isEmpty() || ehOperador(buttonText)) {
+                    expressao.add(buttonText);
                 } else {
-                    expressao += buttonText;
-                    atualizarTela(expressao, result);
+                    // Se o último elemento não for um operador, então deve ser um número, concatena
+                    String ultimo = expressao.getLast();
+                    if (!ehOperador(ultimo)) {
+                        expressao.set(expressao.size() - 1, ultimo + buttonText);
+                    } else {
+                        expressao.add(buttonText);
+                    }
                 }
+                atualizarTela(String.join(" ", expressao), result); // Exibe com espaços
                 break;
         }
+    }
+
+    private boolean ehOperador(String s) {
+        return s.equals("+") || s.equals("-") || s.equals("x") || s.equals("/");
     }
 
     private void atualizarTela(String texto, Label label) {
