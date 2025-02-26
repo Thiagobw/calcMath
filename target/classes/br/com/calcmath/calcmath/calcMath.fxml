@@ -29,7 +29,7 @@
    <rotationAxis>
       <Point3D />
    </rotationAxis>
-   <Label fx:id="operacao" alignment="CENTER" contentDisplay="CENTER" minHeight="49.5" minWidth="310.0" prefHeight="56.0" prefWidth="335.0" textAlignment="CENTER" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+   <Label fx:id="lblExpressaoAnterior" alignment="CENTER" contentDisplay="CENTER" minHeight="49.5" minWidth="310.0" prefHeight="56.0" prefWidth="335.0" textAlignment="CENTER" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
       <GridPane.margin>
          <Insets />
       </GridPane.margin>
@@ -40,12 +40,12 @@
          <Font name="System Bold" size="18.0" />
       </font>
    </Label>
-   <Button fx:id="btn0" minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="," GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" prefHeight="56.0" prefWidth="80.0" text="," GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
@@ -55,47 +55,47 @@
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="btn1" minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="btn2" minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="btn3" minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="btn4" minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="4" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="4" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="btn5" minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="btn6" minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="btn7" minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="7" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="7" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="btn8" minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="btn9" minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
@@ -120,14 +120,17 @@
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="apaga" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="C" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="&lt;-" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+   <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="c" GridPane.columnIndex="2" GridPane.rowIndex="3">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font></Button>
    <Button minHeight="49.5" minWidth="73.75" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="56.0" prefWidth="80.0" text="\%" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
    </Button>
-   <Label fx:id="result" alignment="CENTER" contentDisplay="CENTER" minHeight="104.0" minWidth="310.0" prefHeight="117.0" prefWidth="335.0" text="0" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+   <Label fx:id="lblExpressaoAtual" alignment="CENTER" contentDisplay="CENTER" minHeight="104.0" minWidth="310.0" prefHeight="117.0" prefWidth="335.0" text="0" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
